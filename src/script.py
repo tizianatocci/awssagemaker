@@ -13,6 +13,7 @@ import pandas as pd
 
 def model_fn(model_dir):
     clf = joblib.load(os.path.join(model_dir, "model.joblib"))
+    return clf
 
 
 if __name__=="__main__":
@@ -20,8 +21,8 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser()
 
     # Hyperparameter
-    parser.add_argument("--n_estimators", type=int, default=100)
-    parser.add_argument("--random_state", type=int, default=0)
+    parser.add_argument("--n-estimators", type=int, default=100)
+    parser.add_argument("--random-state", type=int, default=0)
 
     ### Data, model and output directories
     parser.add_argument("--model-dir", type=str, default=os.environ.get("SM_MODEL_DIR"))
